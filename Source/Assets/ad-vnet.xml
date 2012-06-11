@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchem
+a" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+  <VirtualNetworkConfiguration>
+    <VirtualNetworkSites>
+      <VirtualNetworkSite name="ADVNET" AffinityGroup="adag">
+        <AddressSpace>
+          <AddressPrefix>192.168.0.0/16</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="ADSubnet">
+            <AddressPrefix>192.168.1.0/24</AddressPrefix>
+          </Subnet>
+          <Subnet name="AppSubnet">
+            <AddressPrefix>192.168.2.0/24</AddressPrefix>
+          </Subnet>
+        </Subnets>
+      </VirtualNetworkSite>
+    </VirtualNetworkSites>
+  </VirtualNetworkConfiguration>
+</NetworkConfiguration>
