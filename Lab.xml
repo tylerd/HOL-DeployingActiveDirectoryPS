@@ -7,7 +7,7 @@
 	<Author>
 		<Name>mwasham</Name>
 	</Author>
-  <Description>In this hands on lab you will walk through the steps necessary to deploy a stand-alone domain in the cloud using Windows Azure Virtual Machines and Virtual Networks using PowerShell.</Description>
+  <Description>In this Hands-on lab you will walk through the steps necessary to deploy a stand-alone domain in the cloud using Windows Azure Virtual Machines and Virtual Networks using PowerShell.</Description>
 	<Document ConversionType="Html">.\HOL.md</Document>
 	<Title>Deploying Active Directory in Windows Azure (PowerShell)</Title>
 	<Version>1.0.0</Version>
