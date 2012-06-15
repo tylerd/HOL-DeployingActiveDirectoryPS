@@ -179,7 +179,7 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 	$imgname = 'ImageNameGoesHere'
 	````
 
-1. Next run the following commands to create the domain controller in the correct virtual network and subnet.
+1. Next run the following commands to create the domain controller in the correct virtual network and subnet with an additional disk of 20 GB.
 
 	````PowerShell
 
@@ -193,7 +193,7 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 		Add-AzureProvisioningConfig -Windows -Password $pwd |
 		Set-AzureSubnet -SubnetNames 'ADSubnet' |
 		Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel 'DITDrive' -LUN 0 |
-		New-AzureVM –ServiceName $cloudsvc -AffinityGroup 'adag' -VNetName 'ADVNET'
+		New-AzureVM -ServiceName $cloudsvc -AffinityGroup 'adag' -VNetName 'ADVNET'
 
 	````
 
@@ -201,6 +201,8 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 #### Task 3 - Creating the Domain Controller ####
 
 1. Login to the newly created virtual machine in the Windows Azure Portal by clicking on Virtual Machines, the VM **ad-dc**, and click **Connect** at the bottom.
+
+> **Note:** Before connecting to the VM, you have to wait until it gets to the Running state.
 
 1. Once logged in, start a console session and run the command **IPConfig** and copy the IPv4 IP Address returned. You will use it later to provision new VMs in the domain.
 
@@ -308,7 +310,7 @@ Once the domain controller has finished booting you will now be able to provisio
 The example below demonstrates how you can automatically provision new virtual machines that are joined to the Active Directory domain at boot.
 
 
-1. The **Add-AzureProvisioningConfig** also takes a **-MachineObjectOU** parameter which if specified (requires the full distinguished name in AD) allows for setting group policy settings on all of the virtual machines in that container. Ensure that you replace **storageaccountname** with the storage account you created earlier.
+1. Execute the following commands in the Windows Azure PowerShell console.
 
 	>**Note:** To get the IP Address of the Domain Controller, connect to the VM you have created. In a command prompt, enter **IPConfig** and copy the IPv4
 	>
@@ -319,7 +321,6 @@ The example below demonstrates how you can automatically provision new virtual m
 	# Point to IP Address of Domain Controller Created Earlier
 	$dns1 = New-AzureDns -Name 'ad-dc' -IPAddress '[Domain-Controller IP Address]'
 	
-	
     # Configuring VM to Automatically Join Domain
 	$advm1 = New-AzureVMConfig -Name 'advm1' -InstanceSize Small -ImageName $imgname | 
 		Add-AzureProvisioningConfig -WindowsDomain -Password '[YOUR-PASSWORD]' `
@@ -328,16 +329,19 @@ The example below demonstrates how you can automatically provision new virtual m
 		Set-AzureSubnet -SubnetNames 'AppSubnet' 
    
     # New Cloud Service with VNET and DNS settings
-    New-AzureVM –ServiceName 'someuniqueappname' -AffinityGroup 'adag' `
+    New-AzureVM -ServiceName '[SOMEUNIQUEAPPNAME]' -AffinityGroup 'adag' `
 							-VMs $advm1 -DnsSettings $dns1 -VNetName 'ADVNET' 
 	
 	````
+
+	> **Note:** The **Add-AzureProvisioningConfig** also takes a **-MachineObjectOU** parameter which if specified (requires the full distinguished name in AD) allows for setting group policy settings on all of the virtual machines in that container.
+
 
     ![AD Architecture](images/ad-architecture.png?raw=true)
     
     _Resulting Architecture_
 
-1. Once the VM is provisioned, open a remote desktop connection.
+1. Once the VM is provisioned, connect to the newly created virtual machine in the Windows Azure Portal by clicking on Virtual Machines, select the VM, and click **Connect** at the bottom.
 
 1. Open the Initial Configuration Tasks and verify the domain is _contoso.com_. 
 
