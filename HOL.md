@@ -70,7 +70,7 @@ In this task, you will log on to the Windows Azure Portal and download the publi
 
 	> **Note:** The download page shows you how to import the publish-settings file using Visual Studio Publish box. This lab will show you how to import it using the Windows Azure PowerShell Cmdlets instead.
 
-1.In the start menu under **Windows Azure**, right-click **Windows Azure PowerShell** and choose **Run as Administrator**.
+1.	In the start menu under **Windows Azure**, right-click **Windows Azure PowerShell** and choose **Run as Administrator**.
 
 1.	Change the PowerShell execution policy to **RemoteSigned**. When asked to confirm press **Y** and then **Enter**.
 	
@@ -208,7 +208,7 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 
 	_Virtual Machine IP_
 
-1. Open **Computer Manager** by going to **Start** | **All Programs** | **Administrative Tools** | **Computer Manager**.
+1. Open **Computer Management** by going to **Start** | **All Programs** | **Administrative Tools** | **Computer Management**.
 
 1. Expand the **Storage** node and select **Disk Management**.
 
@@ -216,7 +216,7 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 
 	_Opening Disk Management_
 
-1. Right-click the **Disk 2** and select **Initialize Disk**. Click **Ok** to start the disk initialization.
+1. Initialize **Disk 2** by clicking **OK** in the **Initialize Disk** dialog.
 
 	![Initializing Disk](images/initializing-disk.png?raw=true)
 
@@ -234,13 +234,13 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 
 	_Formatted disk_
 
-1. Now, you will start the **Active Directory Domain Services Installation Wizard**. To do this, click start and run and type in _DCPromo_ and press **enter**.
+1. Now, you will start the **Active Directory Domain Services Installation Wizard**. To do this, click start and run and type in _DCPromo_ and press **enter**. Wait until the ADDS binaries are installed.
 
 	![dcpromostart](images/dcpromostart.png?raw=true)	
 
 	_Active Directory Domain Services Installation Wizard_
 
-1. Click **Next** Two Times. 
+1. Click **Next** two times. 
 
 1. Choose **Create a new domain in a new forest** and click **Next**.
 
@@ -254,23 +254,25 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 
 	_Setting the domain name_
 
-1. Set the functional level to **Windows Server 2008 R2**.
+1. Set the functional level to **Windows Server 2008 R2**. Click **Next** and wait until the process completes.
 
 	![functionallevel](images/functionallevel.png?raw=true)
 
 	_Selecting the forest functional level_
 
-1. Choose the Default of Creating a DNS Server
+1.	Use the default selection to create a **DNS server**. Click **Next**.
 
 	![DNSSelection](images/dnsselection.png?raw=true)
 
 	_Selecting additional options_
 
-	>**Note:** Choose **Yes**, the computer will use an IP address automatically assigned by a DHCP server (not recommended).
-	>
-	> ![dhcp-address](images/dhcp-address.png?raw=true)
-	>
-	>Using Virtual Networks with Windows Azure IaaS the IP address has a lifetime of the virtual machine lease. Do NOT set the IP address to static.
+1. Choose **Yes**, the computer will use an IP address automatically assigned by a DHCP server (not recommended).
+	 
+	![dhcp-address](images/dhcp-address.png?raw=true)
+
+	_Using automatically assigned IP_
+
+	>**Note:** Using Virtual Networks with Windows Azure IaaS the IP address has a lifetime of the virtual machine lease. Do NOT set the IP address to static.
 
 1. Since you are not integrating into an existing AD environment in this lab, click **Yes**.
 
@@ -290,7 +292,7 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 
 	_Setting Domain Administrator password_
 
-1. Finally, click **Next** again and allow for Active Directory to be configured. When prompted to allow reboot choose **Restart Now**.
+1. Finally, click **Next** again and allow for Active Directory to be configured, this will take several minutes. When prompted to allow reboot choose **Restart Now**.
 
 
 
