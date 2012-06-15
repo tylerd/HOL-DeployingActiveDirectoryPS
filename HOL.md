@@ -104,6 +104,21 @@ In this task, you will log on to the Windows Azure Portal and download the publi
 	Get-AzureStorageAccount | select StorageAccountName 
 	````
 
+1. If you do NOT have a storage account returned above you should create one first.
+  
+	1. Run the following to determine the data center to create your storage account in. Ensure you pick a data center that shows support for PersistentVMRole. 
+
+		````PowerShell
+		Get-AzureLocation  
+		````
+
+	1. Create your storage account: 
+
+
+		````PowerShell
+		New-AzureStorageAccount -StorageAccountName '[YOUR-SUBSCRIPTION-NAME]' -Location '[DC-LOCATION]'
+		````
+
 1. Execute the following command to set your current storage account for your subscription.
 
 	````PowerShell
