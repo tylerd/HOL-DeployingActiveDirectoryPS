@@ -1,4 +1,4 @@
-﻿<a name='handsonlab' />
+<a name='handsonlab' />
 # Deploying Active Directory in Windows Azure (PowerShell) #
 ---
 
@@ -23,7 +23,7 @@ The following is required to complete this hands-on lab:
 
 - [Windows PowerShell 2.0][1]
 - [Windows Azure PowerShell CmdLets][2]
-- A Windows Azure subscription with the Virtual Machines Preview enabled - you can sign up for free trial [here](http://bit.ly/WindowsAzureFreeTrial)
+- A Windows Azure subscription with the Virtual Machines Preview enabled - you can [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
 
 [1]: http://microsoft.com/powershell/
 [2]: http://msdn.microsoft.com/en-us/library/windowsazure/jj156055
