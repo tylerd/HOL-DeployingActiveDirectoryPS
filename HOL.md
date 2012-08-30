@@ -206,9 +206,9 @@ We can choose whether to use the Windows Azure Portal or PowerShell to provision
 
 	New-AzureVMConfig -Name $vmname1 -InstanceSize Small -ImageName $imgname |
 		Add-AzureProvisioningConfig -Windows -Password $pwd |
-		Set-AzureSubnet -SubnetNames 'ADSubnet' |
+		Set-AzureSubnet -SubnetNames $subnet |
 		Add-AzureDataDisk -CreateNew -DiskSizeInGB 20 -DiskLabel 'DITDrive' -LUN 0 |
-		New-AzureVM -ServiceName $cloudsvc -AffinityGroup 'adag' -VNetName 'ADVNET'
+		New-AzureVM -ServiceName $cloudsvc -AffinityGroup 'adag' -VNetName $vnet
 
 	````
 
